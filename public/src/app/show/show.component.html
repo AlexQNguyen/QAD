@@ -1,0 +1,23 @@
+<div *ngIf="deep">
+  <h3>What is the Answer to the Ultimate Question?</h3>
+  <h4> {{ deep.thought }} </h4>
+  <h6> {{ deep.description }} </h6>
+
+
+  <a [routerLink]="['/edit',deep._id]">Answer this Question</a>
+  <a [routerLink]="['/dashboard']">|Dashboard</a><br>
+  <a href="" (click)="onDestroy()"> Logout</a>
+
+  <div *ngFor="let answer of deep?.answers">
+    <h4>Answered By: {{ answer.author }}</h4>
+    <h5>{{ answer.content }}</h5>
+    <h6>Details: {{ answer.detail }}</h6>
+
+    <p>{{ deep.updatedAt | date: "medium" }}</p>
+      0{{ deep.likes }} Likes
+      <button (click)="onLike()">Like!</button>
+
+</div>
+</div>
+
+<router-outlet></router-outlet>

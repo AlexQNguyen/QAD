@@ -1,0 +1,34 @@
+  <h4>Hi, {{ userName }}</h4>
+  <a href="" (click)="onDestroy()">Logout</a><br />
+
+
+    <a [routerLink]="['/new']"> | Add a Deep thought</a>
+
+
+
+
+
+
+<table style="width:80%; text-align:center">
+  <tr>
+    <th>Deep Thought</th>
+    <th>Answers</th>
+    <th>Last Answered</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let deep of deeps ">
+    <td> {{ deep.thought}}</td>
+    <td>{{ deep.answers.length }}</td>
+    <td>{{ deep.updatedAt | date:"longDate"}}</td>
+    <td>
+      <a [routerLink]="['/dashboard/show',deep._id]">Show </a>
+      <a [routerLink]="['/edit',deep._id]">| Answer </a>
+    </td>
+
+  </tr>
+
+</table>
+
+
+
+<router-outlet></router-outlet>

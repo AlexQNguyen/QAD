@@ -1,0 +1,24 @@
+<div *ngIf="deep">
+<a href="" (click)="onDestroy()">Logout</a><br />
+<a [routerLink]="['/dashboard']">Dashboard</a>
+<a [routerLink]="['/home']">|Home</a>
+
+
+<h4>What is the Answer to the Ultimate Question?</h4>
+  <h6>{{ deep.thought }}</h6>
+  <form  (ngSubmit)="submitAnswer()">
+    Answer: <textarea rows="5" cols="50" type="text" name="answer" required minlength="10" [(ngModel)]="deep.content" #answer="ngModel"></textarea><br>
+    <div *ngIf="answer.errors && (answer.dirty || answer.touched)">
+        <div [hidden]= "!answer.errors.required ">
+          answer is required
+        </div>
+        <div [hidden]= "!answer.errors.minlength">
+          answer must be at least 10 characters
+        </div>
+    </div>
+    <hr >
+    Supporting Details for your Answer (optional) <textarea rows="5" cols="50" type="text" name="answer" [(ngModel)]="deep.detail"></textarea><br>
+    <input type="submit" value="Answer"/>  <button (click)='goBack()'>Cancel </button>
+  </form>
+
+</div>

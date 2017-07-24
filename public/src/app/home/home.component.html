@@ -1,0 +1,21 @@
+
+<a href="" (click)="onDestroy()">Logout</a><br />
+  <h4>Hi, {{ userName }}</h4>
+
+    <a [routerLink]="['/dashboard']">deeps Dashboard</a>
+    <a [routerLink]="['/new']"> | Register a deep</a>
+
+
+<table style="width:50%">
+  <tr>
+    <th>Deep Thought</th>
+    <th>Notes</th>
+  </tr>
+  <tr *ngFor="let deep of deeps">
+    <td><a [routerLink]="['/dashboard/show',deep._id]"> {{ deep.userName }}</a></td>
+    <td>{{deep.answer_count}}</td>
+  </tr>
+
+</table>
+
+<router-outlet></router-outlet>

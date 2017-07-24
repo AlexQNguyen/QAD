@@ -1,0 +1,16 @@
+<h6>Please enter a User Name</h6>
+<div class="login">
+  <form #loginform="ngForm" (submit)="onLogin()">
+    <input type='text' name="userName" [(ngModel)]="userName" required minlength='4' #user_name="ngModel"/>
+      <br />
+      <button [disabled]="!loginform.valid" type="submit" name="button">Login</button>
+    <div *ngIf="user_name.errors && (user_name.dirty || user_name.touched)">
+        <div [hidden]= "!user_name.errors.required ">
+          User Name is required
+        </div>
+        <div [hidden]= "!user_name.errors.minlength">
+          User Name must be at least 4 characters
+        </div>
+    </div>
+  </form>
+</div>

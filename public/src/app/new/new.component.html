@@ -1,0 +1,22 @@
+<h2>Add a Deep Thought</h2>
+  <a href="" (click)="onDestroy()">Logout</a><br />
+  <a [routerLink]="['/dashboard']">Dashboard</a>
+  <a [routerLink]="['/home']">| Home</a>
+<router-outlet></router-outlet>
+<form  (ngSubmit)="onSubmit()">
+
+
+  Thought: <textarea rows="5" cols="50" type="text" name="thought" required minlength="10"[(ngModel)]="deep.thought" #thought="ngModel"></textarea><br />
+  <div *ngIf="thought.errors && (thought.dirty || thought.touched)">
+      <div [hidden]= "!thought.errors.required ">
+        Thought is required
+      </div>
+      <div [hidden]= "!thought.errors.minlength">
+        Thought must be at least 10 characters
+      </div>
+  </div>
+  <hr>
+  Description: <textarea rows="5" cols="50" type="text" name="description" [(ngModel)]="deep.description" #description="ngModel"></textarea><br />
+
+  <input type="submit" value="Register deep"/>
+</form>
